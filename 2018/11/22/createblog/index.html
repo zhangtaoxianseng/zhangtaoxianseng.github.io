@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>Hello World</title>
+	<title>createblog</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《Hello World》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《createblog》</p>
 			
 		
 	
@@ -160,8 +160,8 @@
 					
 					
 	
-		<a href="/2018/11/21/hello-world/" itemprop="url">		
-			Hello World		
+		<a href="/2018/11/22/createblog/" itemprop="url">		
+			createblog		
 		</a>
 	
 
@@ -170,9 +170,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/21/hello-world/" itemprop="url">
-	<time datetime="2018-11-21T09:26:59.702Z" itemprop="datePublished">
-  		2018-11-21
+						<a href="/2018/11/22/createblog/" itemprop="url">
+	<time datetime="2018-11-22T09:28:55.000Z" itemprop="datePublished">
+  		2018-11-22
   </time>
 </a>    
 &nbsp;
@@ -187,15 +187,24 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+						<p>#搭建开始</p>
+<h3 id="1-新建一个Repository"><a href="#1-新建一个Repository" class="headerlink" title="1.新建一个Repository"></a>1.新建一个Repository</h3><p>在repository name下填写 yourname.github.io<br><img src="\..\images\image.png" alt="upload successful"><br>创建成功</p>
+<p><img src="\..\images\pasted-0.png" alt="upload successful"><br>建立一个以你自己名字 yourname.giothub.io 域名地址</p>
+<h3 id="2-安装github"><a href="#2-安装github" class="headerlink" title="2.安装github"></a>2.安装github</h3><p>安装到自己电脑终端不会自己百度，还有安装node环境</p>
+<h3 id="3-安装hexo环境"><a href="#3-安装hexo环境" class="headerlink" title="3.安装hexo环境"></a>3.安装hexo环境</h3><p>在你的终端里安装 </p>
+<blockquote>
+<p>$ npm install -g hexo-cli</p>
+</blockquote>
+<h3 id="4-初始化hexo"><a href="#4-初始化hexo" class="headerlink" title="4.初始化hexo"></a>4.初始化hexo</h3><p>进入你要初始化hexo的文件里，<br>$ hexo init blog<br>就可以初始化博客文件</p>
+<p>$ hexo server<br>可以本地运行，预览博客内容</p>
+<h3 id="5-为-Hexo-安装-Git-插件"><a href="#5-为-Hexo-安装-Git-插件" class="headerlink" title="5.为 Hexo 安装 Git 插件"></a>5.为 Hexo 安装 Git 插件</h3><p>安装 hexo-deployer-git，否则会报 ERROR Deployer not found: git 的错误。</p>
+<p>$npm install hexo-deployer-git –save</p>
+<p>修改你的 _config.yml 配置文件如下：</p>
+<h4 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h4><h4 id="Docs-https-hexo-io-docs-deployment-html"><a href="#Docs-https-hexo-io-docs-deployment-html" class="headerlink" title="Docs: https://hexo.io/docs/deployment.html"></a>Docs: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">https://hexo.io/docs/deployment.html</a></h4><p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/yourname/yournaem.github.io.git" target="_blank" rel="noopener">https://github.com/yourname/yournaem.github.io.git</a><br>  branch: master</p>
+<h4 id="6-生成静态文件和部署"><a href="#6-生成静态文件和部署" class="headerlink" title="6.生成静态文件和部署"></a>6.生成静态文件和部署</h4><p>$ hexo g</p>
+<p>$ hexo d</p>
+<p>最后出现以下提示代表成功了<br><img src="\images\pasted-2.png" alt="filename already exists, renamed"><br>INFO  Deploy done: git</p>
+<p>你就可以打开以自己名字命名的yourname.github.io的博客了</p>
 
 					
 				</div>
@@ -204,13 +213,13 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/22/童话镇-1/" title="fairy">
-      		&laquo; 上一篇
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/11/22/童话镇-1/" title="fairy">
+			下一篇 &raquo;
 		</a>
 		</li>
-	
-	
+	 
  </ul>
         
 
@@ -298,7 +307,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-新建一个Repository"><span class="post-toc-text">1.新建一个Repository</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-安装github"><span class="post-toc-text">2.安装github</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-安装hexo环境"><span class="post-toc-text">3.安装hexo环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-初始化hexo"><span class="post-toc-text">4.初始化hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-为-Hexo-安装-Git-插件"><span class="post-toc-text">5.为 Hexo 安装 Git 插件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Deployment"><span class="post-toc-text">Deployment</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Docs-https-hexo-io-docs-deployment-html"><span class="post-toc-text">Docs: https://hexo.io/docs/deployment.html</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-生成静态文件和部署"><span class="post-toc-text">6.生成静态文件和部署</span></a></li></ol></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>

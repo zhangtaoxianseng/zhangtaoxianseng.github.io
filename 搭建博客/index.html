@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>文章归档: 2018</title>
+	<title>createblog</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,9 +54,8 @@
 		
 		
 			
-			<!-- && is_current('archives/index.html') -->
-			<p class="page-name">文章归档</p>
-		
+			<p class="page-name">createblog</p>
+			
 		
 	
 	
@@ -147,82 +146,48 @@
 		<!--main-->
 		<main> 
 		<div class="page-container">
-		<!-- content srart -->
+		<!--content start-->
 <div class="am-g am-g-fixed blog-fixed blog-content">
-	<div class="am-u-md-8 am-u-sm-12">
-		<div class="archive">
+    <div class="am-u-md-8 am-u-sm-12">
+        <article class="am-article blog-article-p">
 
-			<div class="blog-text-center">
-				
-					<i class="fa fa-book">总计3篇文章</i>
-				
-			</div>  
-
+            <div class="page-header">
+	<div class="blog-text-center">
+		
 			
+			createblog
 
-							
-				
-				
-				
-					
+		  	 		
+	</div>    	 		
+</div>  	 		
 
-					
-					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2018/11">
-							2018-11
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/11/22/createblog/" itemprop="url">createblog</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/11/22/createblog/" itemprop="url">11-22</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/11/22/童话镇-1/" itemprop="url">fairy</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/11/22/童话镇-1/" itemprop="url">11-22</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/11/21/hello-world/" itemprop="url">Hello World</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/11/21/hello-world/" itemprop="url">11-21</a>
-					</div>
-				</div>		        							
-			
-				
-			    
-		</div>
-	</div>
+                
+
+                <p>#搭建开始</p>
+<h3 id="1-新建一个Repository"><a href="#1-新建一个Repository" class="headerlink" title="1.新建一个Repository"></a>1.新建一个Repository</h3><p>在repository name下填写 yourname.github.io<br><img src="\..\images\image.png" alt="upload successful"><br>创建成功</p>
+<p><img src="\..\images\pasted-0.png" alt="upload successful"><br>建立一个以你自己名字 yourname.giothub.io 域名地址</p>
+<h3 id="2-安装github"><a href="#2-安装github" class="headerlink" title="2.安装github"></a>2.安装github</h3><p>安装到自己电脑终端不会自己百度，还有安装node环境</p>
+<h3 id="3-安装hexo环境"><a href="#3-安装hexo环境" class="headerlink" title="3.安装hexo环境"></a>3.安装hexo环境</h3><p>在你的终端里安装 </p>
+<blockquote>
+<p>$ npm install -g hexo-cli</p>
+</blockquote>
+<h3 id="4-初始化hexo"><a href="#4-初始化hexo" class="headerlink" title="4.初始化hexo"></a>4.初始化hexo</h3><p>进入你要初始化hexo的文件里，<br>$ hexo init blog<br>就可以初始化博客文件</p>
+<p>$ hexo server<br>可以本地运行，预览博客内容</p>
+<h3 id="5-为-Hexo-安装-Git-插件"><a href="#5-为-Hexo-安装-Git-插件" class="headerlink" title="5.为 Hexo 安装 Git 插件"></a>5.为 Hexo 安装 Git 插件</h3><p>安装 hexo-deployer-git，否则会报 ERROR Deployer not found: git 的错误。</p>
+<p>$npm install hexo-deployer-git –save</p>
+<p>修改你的 _config.yml 配置文件如下：</p>
+<h4 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h4><h4 id="Docs-https-hexo-io-docs-deployment-html"><a href="#Docs-https-hexo-io-docs-deployment-html" class="headerlink" title="Docs: https://hexo.io/docs/deployment.html"></a>Docs: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">https://hexo.io/docs/deployment.html</a></h4><p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/yourname/yournaem.github.io.git" target="_blank" rel="noopener">https://github.com/yourname/yournaem.github.io.git</a><br>  branch: master</p>
+<h4 id="6-生成静态文件和部署"><a href="#6-生成静态文件和部署" class="headerlink" title="6.生成静态文件和部署"></a>6.生成静态文件和部署</h4><p>$ hexo g</p>
+<p>$ hexo d</p>
+<p>最后出现以下提示代表成功了<br><img src="\images\pasted-2.png" alt="filename already exists, renamed"><br>INFO  Deploy done: git</p>
+<p>你就可以打开以自己名字命名的yourname.github.io的博客了</p>
+
+
+            
+        </article>
+    </div>
 </div>
+
 
 		</div>
 		</main>
