@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>fairy</title>
+	<title>vue</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《fairy》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《vue》</p>
 			
 		
 	
@@ -160,8 +160,8 @@
 					
 					
 	
-		<a href="/2018/11/22/童话镇-1/" itemprop="url">		
-			fairy		
+		<a href="/2018/11/26/vue/" itemprop="url">		
+			vue		
 		</a>
 	
 
@@ -170,9 +170,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/22/童话镇-1/" itemprop="url">
-	<time datetime="2018-11-22T02:52:51.000Z" itemprop="datePublished">
-  		2018-11-22
+						<a href="/2018/11/26/vue/" itemprop="url">
+	<time datetime="2018-11-26T02:36:06.000Z" itemprop="datePublished">
+  		2018-11-26
   </time>
 </a>    
 &nbsp;
@@ -187,52 +187,152 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<h2 id="童话镇"><a href="#童话镇" class="headerlink" title="童话镇"></a>童话镇</h2><pre><code>听说白雪公主在逃跑
-   红帽在担心大灰狼
-听说疯帽喜欢爱丽丝
-丑小鸭会变成白天鹅
-听说彼得潘总长不大
-杰克他有竖琴和魔法
-听说森林里有糖果屋
-灰姑娘丢了心爱的玻璃鞋
-只有睿智的河水知道
-白雪是因为贪玩跑出了城堡
-小红帽有件抑制自己
-变成狼的大红袍
-总有一条蜿蜒在童话镇里七彩的河
-沾染魔法的乖张气息
-却又在爱里曲折
-川流不息扬起水花
-又卷入一帘时光入水
-让所有很久很久以前
-都走到幸福结局的时刻
-听说睡美人被埋藏
-小人鱼在眺望金殿堂
-听说阿波罗变成金乌
-草原有奔跑的剑齿虎
-听说匹诺曹总说着谎
-侏儒怪拥有宝石满箱
-听说悬崖有棵长生树
-红鞋子不知疲倦地在跳舞
-只有睿智的河水知道
-睡美人逃避了生活的煎熬
-小人鱼把阳光抹成眼影
-投进泡沫的怀抱
-总有一条蜿蜒在童话镇里七彩的河
-沾染魔法的乖张气息
-却又在爱里曲折
-川流不息扬起水花
-又卷入一帘时光入水
-让所有很久很久以前
-都走到幸福结局的时刻
-总有一条蜿蜒在童话镇里梦幻的河
-分隔了理想分隔现实
-又在前方的山口汇合
-川流不息扬起水花
-又卷入一帘时光入水
-让所有很久很久以前
-都走到幸福结局的时刻 又陌生
-</code></pre>
+						<h2 id="vue计算属性"><a href="#vue计算属性" class="headerlink" title="vue计算属性"></a>vue计算属性</h2><p>在vue模块内放入太多逻辑会让模板过重难以维护</p>
+<pre><code>&lt;div id=&apos;example&apos;&gt;
+  {{ message.aplit('').reverse().join('')}}
+ &lt;/div&gt; 
+</code></pre><p> 所以需要用使用计算属性</p>
+<pre><code> &lt;div id=&quot;example&quot;&gt;
+  &lt;p&gt;Original message: &quot;{{ message }}&quot;&lt;/p&gt;
+  &lt;p&gt;Computed reversed message: &quot;{{ reversedMessage }}&quot;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre><hr>
+<pre><code>var vm = new Vue({
+  el: &apos;#example&apos;,
+  data: {
+    message: &apos;Hello&apos;
+  },
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split(&apos;&apos;).reverse().join(&apos;&apos;)
+    }
+  }
+})
+</code></pre><p>结果<br>Original message: “Hello”</p>
+<p>Computed reversed message: “olleH”</p>
+<p>这里我们声明了一个计算属性 reversedMessage。我们提供的函数将用作属性 vm.reversedMessage 的 getter 函数：</p>
+<pre><code>console.log(vm.reversedMessage) // =&gt; &apos;olleH&apos;
+vm.message = &apos;Goodbye&apos;
+console.log(vm.reversedMessage) // =&gt; &apos;eybdooG&apos;
+</code></pre><h3 id="计算属性缓存-vs-方法"><a href="#计算属性缓存-vs-方法" class="headerlink" title="计算属性缓存 vs 方法"></a>计算属性缓存 vs 方法</h3><pre><code>&lt;p&gt;Reversed message: &quot;{{ reversedMessage() }}&quot;&lt;/p&gt;
+
+// 在组件中
+ methods: {
+   reversedMessage: function () {
+     return this.message.split(&apos;&apos;).reverse().join(&apos;&apos;)
+   }
+ }
+</code></pre><p>   两种方式最终结果是完全相同的，不同的是计算属性是基于他们的依赖进行缓存的，只在相关依赖发生改变是他们才会重新求值，这就意味只要message还没发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，不必再次执行函数</p>
+<p>  这页意味着下面的计算属性将不在更新，因为 Date.now()不是响应式依赖：</p>
+<pre><code>computed：{
+  now：function （）{
+ return Data.now()
+ }
+}
+</code></pre><p> 为什么要使用计算属性缓存？<br>   假设我们有个性能开销比较大的计算属性A，它需要遍历一个巨大的数组并做大量的计算，然后我们可能有其他的计算属性依赖A,如果没有缓存，我们将每次调用都是执行A的getter！如果不希望有缓存，请使用方法 ‘mothods’ 上来替代</p>
+<h3 id="计算属性-vs-侦听属性"><a href="#计算属性-vs-侦听属性" class="headerlink" title="计算属性 vs 侦听属性"></a>计算属性 vs 侦听属性</h3><p>   vue提供了一种更加通用的方式来观察和响应vue实例上的数据变动：<strong>[侦听属性]</strong> 。<br>  当你有一些数据需要随着其他数据变动而变动时，你很容易滥用watch–特别是如果你之前使用过Angularjs。 然而，通常更好的做法是使用计算属性而不是命令式的 watch 回调。</p>
+<pre><code>  &lt;div id=&quot;demo&quot;&gt;{{ fullName }}&lt;/div&gt;
+var vm = new Vue({
+  el: &apos;#demo&apos;,
+  data: {
+    firstName: &apos;Foo&apos;,
+    lastName: &apos;Bar&apos;,
+    fullName: &apos;Foo Bar&apos;
+  },
+  watch: {
+    firstName: function (val) {
+      this.fullName = val + &apos; &apos; + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + &apos; &apos; + val
+    }
+  }
+})
+</code></pre><p>   上面代码是命令式且重复的。将它与计算属性的版本进行比较：</p>
+<pre><code> var vm = new Vue({
+  el: &apos;#demo&apos;,
+  data: {
+    firstName: &apos;Foo&apos;,
+    lastName: &apos;Bar&apos;
+  },
+  computed: {
+    fullName: function () {
+      return this.firstName + &apos; &apos; + this.lastName
+    }
+  }
+})
+</code></pre><h3 id="计算属性的setter"><a href="#计算属性的setter" class="headerlink" title="计算属性的setter"></a>计算属性的setter</h3><p>   计算属性默认只有getter，不过在需要时你也可以提供一个setter:</p>
+<pre><code>     computed :{
+  fullname:{
+  get : fucntion(){
+        return this.firstname + &apos;&apos;+ this.lastname  
+  },
+  set:function ( ){
+      var names = newvalue.split(&apos;&apos;)
+     this.firstname = names[0]
+     this.lastname = names[names.length - 1]
+  }
+ }
+}
+</code></pre><p>  现在在运行 vm.fullname  = ‘john doe’时 ， setter会被调用，vm.firstname 和 vm.lastname 也会相应地被更新</p>
+<h2 id="侦听器"><a href="#侦听器" class="headerlink" title="侦听器"></a>侦听器</h2><p>  vue通过wacth选项提供了一个更通用的方法，来响应数据的变化，当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的</p>
+<pre><code>  &lt;div id=&quot;watch-example&quot;&gt;
+&lt;p&gt;
+  Ask a yes/no question:
+  &lt;input v-model=&quot;question&quot;&gt;
+&lt;/p&gt;
+&lt;p&gt;{{ answer }}&lt;/p&gt;
+</code></pre><p>  </p>
+<pre><code>  &lt;!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 --&gt;
+&lt;!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+var watchExampleVM = new Vue({
+  el: &apos;#watch-example&apos;,
+  data: {
+    question: &apos;&apos;,
+    answer: &apos;I cannot give you an answer until you ask a question!&apos;
+  },
+  watch: {
+    // 如果 `question` 发生改变，这个函数就会运行
+    question: function (newQuestion, oldQuestion) {
+      this.answer = &apos;Waiting for you to stop typing...&apos;
+      this.debouncedGetAnswer()
+    }
+  },
+  created: function () {
+    // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
+    // 在这个例子中，我们希望限制访问 yesno.wtf/api 的频率
+    // AJAX 请求直到用户输入完毕才会发出。想要了解更多关于
+    // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
+    // 请参考：https://lodash.com/docs#debounce
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+  },
+  methods: {
+    getAnswer: function () {
+      if (this.question.indexOf(&apos;?&apos;) === -1) {
+        this.answer = &apos;Questions usually contain a question mark. ;-)&apos;
+        return
+      }
+      this.answer = &apos;Thinking...&apos;
+      var vm = this
+      axios.get(&apos;https://yesno.wtf/api&apos;)
+        .then(function (response) {
+          vm.answer = _.capitalize(response.data.answer)
+        })
+        .catch(function (error) {
+          vm.answer = &apos;Error! Could not reach the API. &apos; + error
+        })
+    }
+  }
+})
+&lt;/script&gt;
+</code></pre><p>  在这个示例中，使用 watch 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p>
+<p>  ####计算属性区别<br>  computed和wacth比较的话，当有数据随其他数据变动，computed中所依赖的数据全部会自动更新，wacth需要单独去监听你要改变的数据值</p>
+
 					
 				</div>
 			</div>
@@ -240,15 +340,9 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/22/createblog/" title="createblog">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/11/21/hello-world/" title="Hello World">
+		<a class="pull-right" href="/2018/11/22/markdown/" title="markdown">
 			下一篇 &raquo;
 		</a>
 		</li>
@@ -340,7 +434,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#童话镇"><span class="post-toc-text">童话镇</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue计算属性"><span class="post-toc-text">vue计算属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算属性缓存-vs-方法"><span class="post-toc-text">计算属性缓存 vs 方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算属性-vs-侦听属性"><span class="post-toc-text">计算属性 vs 侦听属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算属性的setter"><span class="post-toc-text">计算属性的setter</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#侦听器"><span class="post-toc-text">侦听器</span></a></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
