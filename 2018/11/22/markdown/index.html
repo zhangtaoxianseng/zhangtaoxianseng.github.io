@@ -61,7 +61,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		11/26/2018 
+		11/27/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -263,16 +263,25 @@
 <pre><code>1 [link text][id]
 2 [id]: http://example.com/ &quot;optional title here&quot;
 </code></pre><p>上面的文字将展示为：</p>
-<p>[link text][id]<br>[id]: <a href="http://example.com/" target="_blank" rel="noopener">http://example.com/</a> “optional title here”</p>
-<p>在文中直接引用链接，直接使用尖括号，把链接加入到尖括号中就可以实现，如下：</p>
-<p><a href="http://example.com/" target="_blank" rel="noopener">http://example.com/</a> or <a href="mailto:address@example.com" target="_blank" rel="noopener">address@example.com</a></p>
-<p>展示如下：<br><a href="http://example.com/" target="_blank" rel="noopener">http://example.com/</a> or <a href="mailto:address@example.com" target="_blank" rel="noopener">address@example.com</a></p>
-<p>插入互联网上图片，格式如下：<br><img src="http://img3.douban.com/mpic/s1108264.jpg" alt="这里写图片描"></p>
-<p>或者如下面的写法：<br><img src="http://img3.douban.com/mpic/s1108264.jpg`" alt="这里写图片描述"></p>
+<pre><code>[link text](超链接地址 “超链接title”)
+[官网]: http://example.com/ &quot;optional title here&quot;
+</code></pre><p>在文中直接引用链接，直接使用尖括号，把链接加入到尖括号中就可以实现，如下：</p>
+<pre><code>[简书](http://jianshu.com)
+[百度](http://baidu.com)
+</code></pre><p>展示如下： </p>
+<p>   <a href="http://jianshu.com" target="_blank" rel="noopener">简书</a></p>
+<p>   <a href="http://baidu.com" target="_blank" rel="noopener">百度</a></p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>插入互联网上图片，格式如下：</p>
+<pre><code>![这里写图片描](http://img3.douban.com/mpic/s1108264.jpg &apos;&apos; 图片的title)
+</code></pre><p>或者如下面的写法：</p>
+<pre><code>![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg &quot;区块链&quot;)
+</code></pre><p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链"></p>
 <h3 id="6-代码块"><a href="#6-代码块" class="headerlink" title="6. 代码块"></a>6. 代码块</h3><pre><code>- 如果在一个行内需要引用代码，只要用反引号`引起来就好，如下： Use the`printf()`function. - 用TAB键起始的段落，会被认为是代码块，如下： echo “hello world”; - 如果TAB不管用的话，需要使用三个反引号` 例如： 下面连高亮都做了。
-</code></pre><p><code>&lt;php&gt;
-    echo &quot;hello world&quot;;
-&lt;/php&gt;</code></p>
+</code></pre><p>  Use the<code>printf()</code>function</p>
+<p><code>function fun(){
+         echo &quot;这是一句非常牛逼的代码&quot;;
+    }
+    fun();</code></p>
 <h3 id="7-分割线和删除线"><a href="#7-分割线和删除线" class="headerlink" title="7. 分割线和删除线"></a>7. 分割线和删除线</h3><p>可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，同时需要在分隔线的上面空一行。如下：</p>
 <pre><code>---
 ****
@@ -338,7 +347,7 @@ ___
 		<ul class="am-pagination">
     
     	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/26/vue/" title="vue">
+   		<a class="pull-left" href="/2018/11/26/vue/" title="vue计算属性">
       		&laquo; 上一篇
 		</a>
 		</li>
@@ -437,7 +446,7 @@ ___
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#markdown-编辑语法"><span class="post-toc-text">markdown 编辑语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-标题与字号"><span class="post-toc-text">1. 标题与字号</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一级标题"><span class="post-toc-text">一级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二级标题"><span class="post-toc-text">二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三级标题"><span class="post-toc-text">三级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#四级标题"><span class="post-toc-text">四级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#五级标题"><span class="post-toc-text">五级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#六级标题"><span class="post-toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#二级标题-1"><span class="post-toc-text">二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二级标题-2"><span class="post-toc-text">二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-有序和无序"><span class="post-toc-text">2. 有序和无序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-引用"><span class="post-toc-text">3. 引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-粗体和斜体"><span class="post-toc-text">4. 粗体和斜体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-链接"><span class="post-toc-text">5. 链接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-代码块"><span class="post-toc-text">6. 代码块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-分割线和删除线"><span class="post-toc-text">7. 分割线和删除线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-表格"><span class="post-toc-text">8. 表格</span></a></li></ol></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#markdown-编辑语法"><span class="post-toc-text">markdown 编辑语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-标题与字号"><span class="post-toc-text">1. 标题与字号</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一级标题"><span class="post-toc-text">一级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二级标题"><span class="post-toc-text">二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三级标题"><span class="post-toc-text">三级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#四级标题"><span class="post-toc-text">四级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#五级标题"><span class="post-toc-text">五级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#六级标题"><span class="post-toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#二级标题-1"><span class="post-toc-text">二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二级标题-2"><span class="post-toc-text">二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-有序和无序"><span class="post-toc-text">2. 有序和无序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-引用"><span class="post-toc-text">3. 引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-粗体和斜体"><span class="post-toc-text">4. 粗体和斜体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-链接"><span class="post-toc-text">5. 链接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图片"><span class="post-toc-text">图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-代码块"><span class="post-toc-text">6. 代码块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-分割线和删除线"><span class="post-toc-text">7. 分割线和删除线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-表格"><span class="post-toc-text">8. 表格</span></a></li></ol></li></ol>
 			</li></nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>

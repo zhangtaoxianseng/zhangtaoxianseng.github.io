@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>vue计算属性</title>
+	<title>小程序mpvue开发</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《vue计算属性》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《小程序mpvue开发》</p>
 			
 		
 	
@@ -160,8 +160,8 @@
 					
 					
 	
-		<a href="/2018/11/26/vue/" itemprop="url">		
-			vue计算属性		
+		<a href="/2018/11/27/小程序mpvue开发/" itemprop="url">		
+			小程序mpvue开发		
 		</a>
 	
 
@@ -170,9 +170,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/26/vue/" itemprop="url">
-	<time datetime="2018-11-26T02:36:06.000Z" itemprop="datePublished">
-  		2018-11-26
+						<a href="/2018/11/27/小程序mpvue开发/" itemprop="url">
+	<time datetime="2018-11-27T08:17:53.000Z" itemprop="datePublished">
+  		2018-11-27
   </time>
 </a>    
 &nbsp;
@@ -187,151 +187,41 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<h2 id="vue计算属性"><a href="#vue计算属性" class="headerlink" title="vue计算属性"></a>vue计算属性</h2><p>在vue模块内放入太多逻辑会让模板过重难以维护</p>
-<pre><code>&lt;div id=&apos;example&apos;&gt;
-  {{ message.aplit('').reverse().join('')}}
- &lt;/div&gt; 
-</code></pre><p> 所以需要用使用计算属性</p>
-<pre><code> &lt;div id=&quot;example&quot;&gt;
-  &lt;p&gt;Original message: &quot;{{ message }}&quot;&lt;/p&gt;
-  &lt;p&gt;Computed reversed message: &quot;{{ reversedMessage }}&quot;&lt;/p&gt;
-&lt;/div&gt;
-</code></pre><hr>
-<pre><code>var vm = new Vue({
-  el: &apos;#example&apos;,
-  data: {
-    message: &apos;Hello&apos;
-  },
-  computed: {
-    // 计算属性的 getter
-    reversedMessage: function () {
-      // `this` 指向 vm 实例
-      return this.message.split(&apos;&apos;).reverse().join(&apos;&apos;)
-    }
-  }
-})
-</code></pre><p>结果<br>Original message: “Hello”</p>
-<p>Computed reversed message: “olleH”</p>
-<p>这里我们声明了一个计算属性 reversedMessage。我们提供的函数将用作属性 vm.reversedMessage 的 getter 函数：</p>
-<pre><code>console.log(vm.reversedMessage) // =&gt; &apos;olleH&apos;
-vm.message = &apos;Goodbye&apos;
-console.log(vm.reversedMessage) // =&gt; &apos;eybdooG&apos;
-</code></pre><h3 id="计算属性缓存-vs-方法"><a href="#计算属性缓存-vs-方法" class="headerlink" title="计算属性缓存 vs 方法"></a>计算属性缓存 vs 方法</h3><pre><code>&lt;p&gt;Reversed message: &quot;{{ reversedMessage() }}&quot;&lt;/p&gt;
+						<p>mpvue <strong><a href="https://github.com/Meituan-Dianping/mpvue" target="_blank" rel="noopener">（github 地址请参见）</a></strong><br>是一个使用 Vue.js 开发小程序的前端框架。框架基于 Vue.js 核心，mpvue 修改了 Vue.js 的 runtime 和 compiler 实现，使其可以运行在小程序环境中，从而为小程序开发引入了整套 Vue.js 开发体验。</p>
+<h4 id="1-快速上手"><a href="#1-快速上手" class="headerlink" title="1. 快速上手"></a>1. <a href="">快速上手</a></h4><p>在node环境下开发，安装git和node环境</p>
+<p>打开终端命令行工具：</p>
+<pre><code>   # 1.先检查下node.js 是否安装成功
+$ node -v
+v8.9.0
 
-// 在组件中
- methods: {
-   reversedMessage: function () {
-     return this.message.split(&apos;&apos;).reverse().join(&apos;&apos;)
-   }
- }
-</code></pre><p>   两种方式最终结果是完全相同的，不同的是计算属性是基于他们的依赖进行缓存的，只在相关依赖发生改变是他们才会重新求值，这就意味只要message还没发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，不必再次执行函数</p>
-<p>  这页意味着下面的计算属性将不在更新，因为 Date.now()不是响应式依赖：</p>
-<pre><code>computed：{
-  now：function （）{
- return Data.now()
- }
-}
-</code></pre><p> 为什么要使用计算属性缓存？<br>   假设我们有个性能开销比较大的计算属性A，它需要遍历一个巨大的数组并做大量的计算，然后我们可能有其他的计算属性依赖A,如果没有缓存，我们将每次调用都是执行A的getter！如果不希望有缓存，请使用方法 ‘mothods’ 上来替代</p>
-<h3 id="计算属性-vs-侦听属性"><a href="#计算属性-vs-侦听属性" class="headerlink" title="计算属性 vs 侦听属性"></a>计算属性 vs 侦听属性</h3><p>   vue提供了一种更加通用的方式来观察和响应vue实例上的数据变动：<strong>[侦听属性]</strong> 。<br>  当你有一些数据需要随着其他数据变动而变动时，你很容易滥用watch–特别是如果你之前使用过Angularjs。 然而，通常更好的做法是使用计算属性而不是命令式的 watch 回调。</p>
-<pre><code>  &lt;div id=&quot;demo&quot;&gt;{{ fullName }}&lt;/div&gt;
-var vm = new Vue({
-  el: &apos;#demo&apos;,
-  data: {
-    firstName: &apos;Foo&apos;,
-    lastName: &apos;Bar&apos;,
-    fullName: &apos;Foo Bar&apos;
-  },
-  watch: {
-    firstName: function (val) {
-      this.fullName = val + &apos; &apos; + this.lastName
-    },
-    lastName: function (val) {
-      this.fullName = this.firstName + &apos; &apos; + val
-    }
-  }
-})
-</code></pre><p>   上面代码是命令式且重复的。将它与计算属性的版本进行比较：</p>
-<pre><code> var vm = new Vue({
-  el: &apos;#demo&apos;,
-  data: {
-    firstName: &apos;Foo&apos;,
-    lastName: &apos;Bar&apos;
-  },
-  computed: {
-    fullName: function () {
-      return this.firstName + &apos; &apos; + this.lastName
-    }
-  }
-})
-</code></pre><h3 id="计算属性的setter"><a href="#计算属性的setter" class="headerlink" title="计算属性的setter"></a>计算属性的setter</h3><p>   计算属性默认只有getter，不过在需要时你也可以提供一个setter:</p>
-<pre><code>     computed :{
-  fullname:{
-  get : fucntion(){
-        return this.firstname + &apos;&apos;+ this.lastname  
-  },
-  set:function ( ){
-      var names = newvalue.split(&apos;&apos;)
-     this.firstname = names[0]
-     this.lastname = names[names.length - 1]
-  }
- }
-}
-</code></pre><p>  现在在运行 vm.fullname  = ‘john doe’时 ， setter会被调用，vm.firstname 和 vm.lastname 也会相应地被更新</p>
-<h2 id="侦听器"><a href="#侦听器" class="headerlink" title="侦听器"></a>侦听器</h2><p>  vue通过wacth选项提供了一个更通用的方法，来响应数据的变化，当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的</p>
-<pre><code>  &lt;div id=&quot;watch-example&quot;&gt;
-&lt;p&gt;
-  Ask a yes/no question:
-  &lt;input v-model=&quot;question&quot;&gt;
-&lt;/p&gt;
-&lt;p&gt;{{ answer }}&lt;/p&gt;
-</code></pre><p>  </p>
-<pre><code>  &lt;!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 --&gt;
-&lt;!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 --&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-var watchExampleVM = new Vue({
-  el: &apos;#watch-example&apos;,
-  data: {
-    question: &apos;&apos;,
-    answer: &apos;I cannot give you an answer until you ask a question!&apos;
-  },
-  watch: {
-    // 如果 `question` 发生改变，这个函数就会运行
-    question: function (newQuestion, oldQuestion) {
-      this.answer = &apos;Waiting for you to stop typing...&apos;
-      this.debouncedGetAnswer()
-    }
-  },
-  created: function () {
-    // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
-    // 在这个例子中，我们希望限制访问 yesno.wtf/api 的频率
-    // AJAX 请求直到用户输入完毕才会发出。想要了解更多关于
-    // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
-    // 请参考：https://lodash.com/docs#debounce
-    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
-  },
-  methods: {
-    getAnswer: function () {
-      if (this.question.indexOf(&apos;?&apos;) === -1) {
-        this.answer = &apos;Questions usually contain a question mark. ;-)&apos;
-        return
-      }
-      this.answer = &apos;Thinking...&apos;
-      var vm = this
-      axios.get(&apos;https://yesno.wtf/api&apos;)
-        .then(function (response) {
-          vm.answer = _.capitalize(response.data.answer)
-        })
-        .catch(function (error) {
-          vm.answer = &apos;Error! Could not reach the API. &apos; + error
-        })
-    }
-  }
-})
-&lt;/script&gt;
-</code></pre><p>  在这个示例中，使用 watch 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p>
-<h2 id="计算属性区别"><a href="#计算属性区别" class="headerlink" title="计算属性区别"></a>计算属性区别</h2><p>  computed和wacth比较的话，当有数据随其他数据变动，computed中所依赖的数据全部会自动更新，wacth需要单独去监听你要改变的数据值</p>
+$ npm -v
+5.6.0
+
+# 2.由于众所周知的原因，可以开旭切换源为taobao源
+$ npm set registry https://registry.npm.taobao.org/
+
+# 3.全局安装 vue-cli
+# 一般是要 sudo 权限 的
+$ npm install --global vue-cli@2.9
+
+# 4.创建一个基于 mpvue-quickstart 模板的新项目
+# 新手一路回车选择默认就可以了
+$ vue init mpvue/mpvue-quickstart my-project
+
+# 5.安装依赖，运行
+$ cd my-project
+$ npm i
+$ npm run dev
+</code></pre><p><img src="\images\zt-1.png" alt="filename already exists, renamed"></p>
+<p>  运行成功的后，可以看到本地目录下多了个 <code>dist</code> 文件，里面是生成的小程序代码。</p>
+<h3 id="2-搭建小程序的开发环境"><a href="#2-搭建小程序的开发环境" class="headerlink" title="2. 搭建小程序的开发环境"></a>2. 搭建小程序的开发环境</h3><p>  微信小程序需要用 <strong> <a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank" rel="noopener">微信开发者工具</a></strong> 开发测试</p>
+<h3 id="3-调试开发mpvue"><a href="#3-调试开发mpvue" class="headerlink" title="3. 调试开发mpvue"></a>3. 调试开发mpvue</h3><p>  打开微信开发者工具，填写里面的项目信息</p>
+<p><img src="\images\zt-2.png" alt="filename already exists, renamed"></p>
+<p><img src="\images\zt-3.png" alt="filename already exists, renamed"></p>
+<p>此时mpvue项目测试成功，用你自己的代码编辑器去编辑 <strong><em>my-project</em></strong> 中的 <strong><em>src</em></strong> 目录下的代码</p>
+<p><img src="\images\zt-4.png" alt="filename already exists, renamed"></p>
+<h3 id="4-分包机制"><a href="#4-分包机制" class="headerlink" title="4. 分包机制"></a>4. 分包机制</h3><p>mpvue-loader 1.1.2-rc.2之后，优化了build后的文件生成结构，生成的目录结构保持了源文夹下的目录结构，有利于分包的支持。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>新增的页面需要重新 <strong>npm run dev</strong> 来进行编译</p>
 
 					
 				</div>
@@ -340,15 +230,9 @@ var watchExampleVM = new Vue({
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/27/小程序mpvue开发/" title="小程序mpvue开发">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/11/22/markdown/" title="markdown">
+		<a class="pull-right" href="/2018/11/26/vue/" title="vue计算属性">
 			下一篇 &raquo;
 		</a>
 		</li>
@@ -440,8 +324,8 @@ var watchExampleVM = new Vue({
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue计算属性"><span class="post-toc-text">vue计算属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算属性缓存-vs-方法"><span class="post-toc-text">计算属性缓存 vs 方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算属性-vs-侦听属性"><span class="post-toc-text">计算属性 vs 侦听属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算属性的setter"><span class="post-toc-text">计算属性的setter</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#侦听器"><span class="post-toc-text">侦听器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算属性区别"><span class="post-toc-text">计算属性区别</span></a></li></ol>
-			</nav>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-快速上手"><span class="post-toc-text">1. 快速上手</span></a></li></ol><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-搭建小程序的开发环境"><span class="post-toc-text">2. 搭建小程序的开发环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-调试开发mpvue"><span class="post-toc-text">3. 调试开发mpvue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-分包机制"><span class="post-toc-text">4. 分包机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项"><span class="post-toc-text">注意事项</span></a>
+			</li></nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
 	
