@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>fairy</title>
+	<title>ES6新特性</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《fairy》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《ES6新特性》</p>
 			
 		
 	
@@ -160,8 +160,8 @@
 					
 					
 	
-		<a href="/2018/11/22/童话镇-1/" itemprop="url">		
-			fairy		
+		<a href="/2018/11/28/se6新特性/" itemprop="url">		
+			ES6新特性		
 		</a>
 	
 
@@ -170,9 +170,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/22/童话镇-1/" itemprop="url">
-	<time datetime="2018-11-22T02:52:51.000Z" itemprop="datePublished">
-  		2018-11-22
+						<a href="/2018/11/28/se6新特性/" itemprop="url">
+	<time datetime="2018-11-28T02:13:42.000Z" itemprop="datePublished">
+  		2018-11-28
   </time>
 </a>    
 &nbsp;
@@ -187,52 +187,91 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<h2 id="童话镇"><a href="#童话镇" class="headerlink" title="童话镇"></a>童话镇</h2><pre><code>听说白雪公主在逃跑
-   红帽在担心大灰狼
-听说疯帽喜欢爱丽丝
-丑小鸭会变成白天鹅
-听说彼得潘总长不大
-杰克他有竖琴和魔法
-听说森林里有糖果屋
-灰姑娘丢了心爱的玻璃鞋
-只有睿智的河水知道
-白雪是因为贪玩跑出了城堡
-小红帽有件抑制自己
-变成狼的大红袍
-总有一条蜿蜒在童话镇里七彩的河
-沾染魔法的乖张气息
-却又在爱里曲折
-川流不息扬起水花
-又卷入一帘时光入水
-让所有很久很久以前
-都走到幸福结局的时刻
-听说睡美人被埋藏
-小人鱼在眺望金殿堂
-听说阿波罗变成金乌
-草原有奔跑的剑齿虎
-听说匹诺曹总说着谎
-侏儒怪拥有宝石满箱
-听说悬崖有棵长生树
-红鞋子不知疲倦地在跳舞
-只有睿智的河水知道
-睡美人逃避了生活的煎熬
-小人鱼把阳光抹成眼影
-投进泡沫的怀抱
-总有一条蜿蜒在童话镇里七彩的河
-沾染魔法的乖张气息
-却又在爱里曲折
-川流不息扬起水花
-又卷入一帘时光入水
-让所有很久很久以前
-都走到幸福结局的时刻
-总有一条蜿蜒在童话镇里梦幻的河
-分隔了理想分隔现实
-又在前方的山口汇合
-川流不息扬起水花
-又卷入一帘时光入水
-让所有很久很久以前
-都走到幸福结局的时刻 又陌生
-</code></pre>
+						<h3 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h3><h4 id="1-let-和-const"><a href="#1-let-和-const" class="headerlink" title="1. let 和 const"></a>1. let 和 const</h4><h5 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h5><p>es6新增了 <code>let</code> 命令，用来声明变量。他的用法类似于 <code>var</code> ，但是所声明的变量，只在 <code>let</code> 命令所在的代码块内有效。</p>
+<pre><code>{
+  let a = 10;
+  var b = 1;
+}
+a //RefrenceError : a is not defined 
+b //1
+</code></pre><p> 上面代码在代码块致中和，分别用 <code>let</code> 和 <code>var</code> 声明了两个变量。然后在代码块之外调用这个两个变量，结果 <code>let</code> 声明变量报错 ， var声明的变量返回了正确的值。这表明，<code>let</code>声明的变量只在它所在的代码块有效。</p>
+<p> 在for循环中的计数器，很适合使用 <code>let</code>命令。</p>
+<pre><code>for ( let i = 0; i&lt;10; i++ ){
+ }
+console.log(i);
+// ReferenError : i is not defined
+</code></pre><p><code>let</code> 定义变量，只能在代码块里，超出代码块就报错；</p>
+<p>如果使用 <code>var</code> ，最后输出的就是for循环停止的数 10；</p>
+<pre><code>var a = [];
+for ( var i = 0; i &lt; 10; i++ ){
+    a[i] = function (){
+        console.log(i)
+    }
+}
+a[6](); //10
+</code></pre><p> 变量 <code>i</code> 是 <code>var</code> 命令声明的，在全局范围内有效，全局只有一个 <code>i</code> 变量。</p>
+<pre><code>var a = [];
+for ( let i =0; i &lt; 10; i++ ){
+   a[i] = function(){
+     console.log(i)
+     }
+   }
+a[6](); //6
+</code></pre><p>  上面代码中，变量<code>i</code>是<code>let</code>声明的，当前的<code>i</code>只在本轮循环有效，所以每次循环的<code>i</code>其实都是一个新的变量，所以最后输出的是6。<br>另外，for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。</p>
+<pre><code>for (let i = 0; i &lt; 3; i++) {
+  let i = &apos;abc&apos;;
+  console.log(i);
+}
+// abc
+// abc
+// abc
+</code></pre><p>  上面代码正确运行，输出了 3 次abc。这表明函数内部的变量i与循环变量i不在同一个作用域，有各自单独的作用域。</p>
+<h5 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h5><p>   <code>var</code> 命令会发生“变量提升”现象，即变量可以在声明之前使用，值为<code>undefined</code> 。一般逻辑，变量应该在声明语句之后才可以使用。<br>   为了纠正这种现象，<code>let</code>命令改变了语法行为，他所声明的变量一定要在声明后使用，否则报错。</p>
+<pre><code>//var 的情况
+console.log(abb) //输出undefined
+var abb = 2；
+
+//let的情况
+console.log（baa）//报错RefernceError
+let baa = 2 ；
+</code></pre><p> 上面的代码中，变量<code>abb</code>用<code>var</code>命令声明，会发生变量提升，即脚本开始运行时，变量<code>abb</code>已经存在了，但是没有值，所以会输出<code>undefined</code>。变量<code>baa</code>用<code>let</code>命令声明，不会发生变量提升。表示在声明之前，变量<code>baa</code>是不存在的，就会报错.</p>
+<h5 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h5><p> 只要块级作用域存在let命令，它所声明的变量就’绑定（binding）’这个区域，不再受外部影响。</p>
+<pre><code>var tmp = 123；
+
+if（true）{
+ tmp = &apos;abc&apos;; //RefernceError
+ let tmp ;
+}
+</code></pre><p><img src="\images\zt-5.png" alt="filename already exists, renamed"></p>
+<p>  上面代码中，存在全局变量tmp，但是块级作用域内let又声明了一个局部变量tmp，导致后者绑定这个块级作用域，所以在let声明变量前，对tmp赋值会报错。</p>
+<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><pre><code>ES6 明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。
+</code></pre><p> 在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称 TDZ）。   </p>
+<pre><code>  if (true) {
+  // TDZ开始
+  tmp = &apos;abc&apos;; // ReferenceError
+  console.log(tmp); // ReferenceError
+
+  let tmp; // TDZ结束
+  console.log(tmp); // undefined
+
+  tmp = 123;
+  console.log(tmp); // 123
+}
+</code></pre><p>   上面代码中，在let 命令声明变量tmp 之前，都属于变量tmp的‘死区’。<br>   ‘暂时性死区’也意味着typeof不再是一个百分之百安全的操作。</p>
+<pre><code>typeof x；//refernceError
+let x;
+</code></pre><p>   上面代码中，变量x使用let命令声明，所以在声明之前，都属于x的死区，只要用到改变量就会报错。因此，typeof运行时就会抛出一个refernceError。</p>
+<p>   作为比较，如果一个变量根本没用声明，使用typeof反而不会报错。</p>
+<pre><code>typeof undeclared_variable // &apos;undefined&apos;
+</code></pre><p>   上面代码中，undeclared_variable是一个不错在的变量名，结果返回‘undefined’。</p>
+<pre><code> //不报错
+ var x = x;
+//报错
+  let x = x  ;
+// refernceError：x is not defined
+</code></pre><p>   上面代码报错，也是因为暂时性死区。使用let 声明变量时，只要变量在还没有声明完成前使用，就会报错。</p>
+<h5 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h5><p>   let不允许在相同作用域内，重复声明用一个变量 </p>
+
 					
 				</div>
 			</div>
@@ -240,15 +279,9 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/22/createblog/" title="createblog">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/11/21/hello-world/" title="Hello World">
+		<a class="pull-right" href="/2018/11/27/小程序mpvue开发/" title="小程序mpvue开发">
 			下一篇 &raquo;
 		</a>
 		</li>
@@ -340,7 +373,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#童话镇"><span class="post-toc-text">童话镇</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li></ol></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
