@@ -61,7 +61,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		11/29/2018 
+		11/30/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -187,7 +187,7 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<h3 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h3><h4 id="1-let-和-const"><a href="#1-let-和-const" class="headerlink" title="1. let 和 const"></a>1. let 和 const</h4><h5 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h5><p>es6新增了 <code>let</code> 命令，用来声明变量。他的用法类似于 <code>var</code> ，但是所声明的变量，只在 <code>let</code> 命令所在的代码块内有效。</p>
+						<h3 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h3><h3 id="一-、let和const"><a href="#一-、let和const" class="headerlink" title="一 、let和const"></a>一 、let和const</h3><h4 id="1-let-和-const"><a href="#1-let-和-const" class="headerlink" title="1. let 和 const"></a>1. let 和 const</h4><h5 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h5><p>es6新增了 <code>let</code> 命令，用来声明变量。他的用法类似于 <code>var</code> ，但是所声明的变量，只在 <code>let</code> 命令所在的代码块内有效。</p>
 <pre><code>{
   let a = 10;
   var b = 1;
@@ -393,20 +393,116 @@ let age = 25;
 //以下两行都会报错
 const message = &apos;goodbye&apos;;
 const age = 30;
-</code></pre><h5 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h5><p> const实际上保证的，并不是变量的值不的改动，而是变量指向的那个内存地址所保存的数据不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了。因此，将一个对象声明为常量必须非常小心。</p>
-<pre><code>  const foo = {};
-  //为foo添加一个属性，可以成功
-  foo.prop = 123;
-  foo.prop //123
+</code></pre><h5 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h5><p><code>const</code>实际上保证的，并不是变量的值不的改动，而是变量指向的那个内存地址所保存的数据不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，<code>const</code>只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了。因此，将一个对象声明为常量必须非常小心。</p>
+<pre><code>const foo = {};
+//为foo添加一个属性，可以成功
+foo.prop = 123;
+foo.prop //123
 
-  //将foo指向另一个对象，就会报错
-  foo = {};//typeError : &apos;foo&apos; is read-only
-
-上面代码中，常量foo储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把foo指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。    
-const a = [];
+//将foo指向另一个对象，就会报错
+foo = {};//typeError : &apos;foo&apos; is read-only
+</code></pre><p>上面代码中，常量<code>foo</code>储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把<code>foo</code>指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。    </p>
+<pre><code>const a = [];
 a.push(&apos;hello&apos;);//可执行
 执行a.length = 0;//可执行
     a = [&apos;dave&apos;] ;//报错
+</code></pre><p>  上面代码中，常量<code>a</code>是一个数组，这个数组本身是可写的，但是如果将另一个数组赋值给<code>a</code>，就会报错。</p>
+<p>  如果真的想将对象冻结，应该使用<code>object.freeze</code>方法.</p>
+<pre><code>const foo = Object.freeze();
+//常规模式时，下面一行不起作用；
+//严格模式时，该行会报错
+foo.prop = 123;
+</code></pre><p>上面代码中，常量<code>foo</code>指向一个冻结的对象，所以添加新属性不起作用，严格模式时还会报错。</p>
+<pre><code>var constantize = (obj) =&gt; {
+    Object.freeze(obj);
+    Object.keys(obj).forEach( (key, i) =&gt; {
+      if ( typeof obj[key] === &apos;object&apos; ) {
+        constantize( obj[key] );
+      }
+    });
+  };
+</code></pre><h5 id="es6声明变量的六种方法"><a href="#es6声明变量的六种方法" class="headerlink" title="es6声明变量的六种方法"></a>es6声明变量的六种方法</h5><p><code>es5</code>只有两种声明变量的方法：<code>var</code> 命令和<code>function</code>命令。<code>es6</code>除了添加<code>let</code>和<code>const</code>命令，还有另外的两种声明变量的方法：<code>import</code>命令和<code>calss</code>命令。所以<code>es6</code>一共有6种声明变量的方法。</p>
+<h4 id="4-顶层对象的属性"><a href="#4-顶层对象的属性" class="headerlink" title="4.顶层对象的属性"></a>4.顶层对象的属性</h4><p>顶层对象，在浏览器环境指的是<code>window</code>对象，在 <code>Node</code> 指的是<code>global</code>对象。<code>ES5</code>之中，顶层对象的属性与全局变量是等价的。</p>
+<pre><code>window.a = 1;
+a // 1
+
+a = 2;
+window.a // 2
+</code></pre><p>  <code>es6</code>为了改变这一点，保持兼容性，<code>var</code>命令和<code>function</code>命令声明的全局变量，依旧是顶层对象属性；另一方面规定，<code>let</code>命令、<code>const</code>命令、<code>class</code>命令声明的全局变量，不属于顶层对象的属性。从<code>es6</code>开始，全局变量降逐步与顶层对象的属性脱钩。</p>
+<pre><code>var a = 1;
+//如果在node的repl环境，可以写成global.a
+//或者采用通用方法，写成this.a
+window.a //1
+
+let b = 1;
+window.b //undefined
+</code></pre><p>上面代码中，全局变量<code>a</code>由<code>var</code>命令声明，所以它是顶层对象的属性；全局变量<code>b</code>有<code>let</code>命令声明，所以他不是顶层对象属性，返回<code>undefined</code>。</p>
+<h3 id="二、Default-Parameters（默认参数）in-ES6"><a href="#二、Default-Parameters（默认参数）in-ES6" class="headerlink" title="二、Default Parameters（默认参数）in ES6"></a>二、Default Parameters（默认参数）in ES6</h3><p> es6之前定义默认参数：</p>
+<pre><code>var link = function（ height，color，url ）{
+  var height = height || 50;
+  var color = color || &apos;red&apos;;
+  var url = url || &apos;http://azat.com&apos;
+}
+</code></pre><p>es6定义默认参数：</p>
+<pre><code>var link = function（height = 50，color= ‘red’，url =‘http://baidu.com’）{
+...
+</code></pre><p>}</p>
+<h3 id="三-template-literals（模板对象）"><a href="#三-template-literals（模板对象）" class="headerlink" title="三.template literals（模板对象）"></a>三.template literals（模板对象）</h3><p>es5中字符串拼接变量，拼接组合字符串：</p>
+<pre><code>var name = &apos;your name is&apos; + first + &apos;&apos; + last +&apos;.&apos;;
+var url = &apos;http://locahost:3000/api/messages/&apos;+id;
+</code></pre><p> es6中，我们可以使用新的语法${name},并把变量放在反引号里面；</p>
+<pre><code>var first = ‘123’；
+var last = ‘阿斯达四大’；
+var name = `your name is ${first}${last}`;
+</code></pre><h3 id="四、Multi-line-Strings（多行字符串）"><a href="#四、Multi-line-Strings（多行字符串）" class="headerlink" title="四、Multi-line Strings（多行字符串）"></a>四、Multi-line Strings（多行字符串）</h3><p>   es6的多行字符串是一个非常实用的功能，在es5中，我们不得不使用以下方法来表示多行字符串： </p>
+<pre><code>var data= &apos;&lt;div&gt;asdasdasdada&lt;/div&gt;&apos;+
+        &apos;&lt;p&gt;asddasdasdasdas&lt;/p&gt;&apos;+
+    &apos;&lt;div&gt;dasdasdasdasd&lt;/div&gt;&apos;;    
+</code></pre><p> 但是在es6中，仅仅用反引号就可以解决了：</p>
+<pre><code>var data = `dasdasdasdasdadada,
+asdasdasdadadadasdasdasdasdasda,
+asdasdasdasddsasd,
+dasdaddasd`;
+</code></pre><h3 id="五、Destructuring-Assignment（结构赋值）"><a href="#五、Destructuring-Assignment（结构赋值）" class="headerlink" title="五、Destructuring Assignment（结构赋值）"></a>五、Destructuring Assignment（结构赋值）</h3><p> 结构可能是一个比较难以掌握的概念。先从一个简单的赋值讲起，其中house 和 mouse是key，同时house 和mouse也是一个变量，在ES5中是这样：</p>
+<pre><code>var data = $(&apos;body&apos;).data(), // data has properties house and mouse
+   house = data.house,
+   mouse = data.mouse;
+</code></pre><p>以及在node.js中用ES5是这样：</p>
+<pre><code>var jsonMiddleware = require(&apos;body-parser&apos;).jsonMiddleware ;
+var body = req.body, // body has username and password
+   username = body.username,
+   password = body.password;
+</code></pre><p> 在es6，我们可以使用这些语句代替上面的es5代码：</p>
+<pre><code>var { house, mouse} = $(&apos;body&apos;).data(); // we&apos;ll get house and mouse variables
+var {jsonMiddleware} = require(&apos;body-parser&apos;);
+var {username, password} = req.body;
+</code></pre><p>这个同样也适用于数组：<br>var [arr1,arr2] =[1,2];</p>
+<h3 id="六、Enhanced-Object-Literals-（增强的对象字面量）"><a href="#六、Enhanced-Object-Literals-（增强的对象字面量）" class="headerlink" title="六、Enhanced Object Literals （增强的对象字面量）"></a>六、Enhanced Object Literals （增强的对象字面量）</h3><p>通过ES6，我们可以把ES5中的json变得更加接近一个类。<br>es5对象文本，里面的属性和方法；</p>
+<pre><code> var serviceBase = { port：3000，url：‘baidu.com’}，
+     getAccounts = function(){
+        return [1,2,3]
+      }
+  }
+
+var accountServiceES5 = {
+    port: serviceBase.port,
+    url: serviceBase.url,
+    getAccounts: getAccounts,
+     toString: function() {
+        return JSON.stringify(this.valueOf());
+    },
+    getUrl: function() {return &quot;http://&quot; + this.url + &apos;:&apos; + this.port},
+    valueOf_1_2_3: getAccounts()
+  }  
+</code></pre><p>  所以在ES6的对象文本中，既可以直接分配getAccounts: getAccounts,也可以只需用一个getAccounts，此外，我们在这里通过<strong>proto</strong>；</p>
+<pre><code>var serviceBase = {
+        port: 3000, url: &apos;azat.co&apos;
+   },
+  getAccounts = function(){return [1,2,3]};
+  var accountService = {
+      __proto__: serviceBase,
+      getAccounts
+  }
 </code></pre>
 					
 				</div>
@@ -509,7 +605,7 @@ a.push(&apos;hello&apos;);//可执行
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-块级作用域"><span class="post-toc-text">2 .块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ES6-的块级作用域"><span class="post-toc-text">ES6 的块级作用域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块级作用域与函数声明"><span class="post-toc-text">块级作用域与函数声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-const"><span class="post-toc-text">3.const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法-1"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本质"><span class="post-toc-text">本质</span></a></li></ol></li></ol></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-、let和const"><span class="post-toc-text">一 、let和const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-块级作用域"><span class="post-toc-text">2 .块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ES6-的块级作用域"><span class="post-toc-text">ES6 的块级作用域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块级作用域与函数声明"><span class="post-toc-text">块级作用域与函数声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-const"><span class="post-toc-text">3.const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法-1"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本质"><span class="post-toc-text">本质</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#es6声明变量的六种方法"><span class="post-toc-text">es6声明变量的六种方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-顶层对象的属性"><span class="post-toc-text">4.顶层对象的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、Default-Parameters（默认参数）in-ES6"><span class="post-toc-text">二、Default Parameters（默认参数）in ES6</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-template-literals（模板对象）"><span class="post-toc-text">三.template literals（模板对象）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、Multi-line-Strings（多行字符串）"><span class="post-toc-text">四、Multi-line Strings（多行字符串）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、Destructuring-Assignment（结构赋值）"><span class="post-toc-text">五、Destructuring Assignment（结构赋值）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、Enhanced-Object-Literals-（增强的对象字面量）"><span class="post-toc-text">六、Enhanced Object Literals （增强的对象字面量）</span></a></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
