@@ -1,0 +1,468 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+
+
+	<!DOCTYPE html>
+	<html>
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<title>python</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="张涛">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+   	<!-- css -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- favicon -->
+	<link href="/img/favicon.ico" rel="Shortcut Icon" type="image/ico">
+	
+	<!-- font-awesome -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+	<body>	
+		<!--Preloader-->
+<div id="preloader">
+	<div id="status">
+		<img alt="PRELOADER" src="/img/logo.png">
+	</div>
+</div>
+<!--Preloader end-->
+
+<!-- header -->
+
+	<header id="header-bg-1" style="background-image: url( /img/1.jpg );">	
+
+	
+		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
+	
+	
+	<!-- motto or description -->
+		
+ 		<p class="motto"></p>
+	
+	
+	<!-- current page name or title -->
+	
+		
+		
+			
+			<p class="page-name">当前文章&nbsp;:&nbsp;《python》</p>
+			
+		
+	
+	
+	<!-- others: such as change-bg, time... -->
+	<p class="page-name-other">
+		12/5/2018 
+		<style type="text/css">
+	header:after {
+		content: '';
+		position: relative;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: #222222;
+		opacity: .5;
+		z-index: -1;
+	}
+	
+	.change-header-bg{
+		font-style: normal;
+	}
+	.change-header-bg i{
+		text-align: center;
+		cursor: pointer;
+		pointer-events: bounding-box;
+	}
+	@media(max-width:512px) {
+		.change-header-bg {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	
+</style>
+
+<script type="text/javascript">
+	function changeHeaderBg(){
+		var random_bg = Math.floor(Math.random() * 109 + 1);
+		var bg = 'url(https://github.com/zhangtaoxianseng/zhangtaoxianseng.github.io/blob/master/img/1.jpg' + random_bg + '.jpg)';
+		$("#header-bg-2").css("background-image", bg);
+	}
+</script>
+
+<span class="change-header-bg">
+	——&nbsp;<i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>	
+</span>
+	</p>		
+</header>
+
+<!-- nav -->
+<div id="cd-nav">
+	<a href="#0" title="menu" class="cd-nav-trigger"><span></span></a>
+
+	<nav id="cd-main-nav">
+		<ul>
+			
+      		<li class="fa fa-/">
+           		<a href="/" title="主页">主页</a>	
+      		</li>
+    		
+      		<li class="fa fa-/archives">
+           		<a href="/archives" title="归档">归档</a>	
+      		</li>
+    		
+      		<li class="fa fa-/categories">
+           		<a href="/categories" title="分类">分类</a>	
+      		</li>
+    		
+      		<li class="fa fa-/tags">
+           		<a href="/tags" title="标签">标签</a>	
+      		</li>
+    		
+      		<li class="fa fa-/about">
+           		<a href="/about" title="关于">关于</a>	
+      		</li>
+    		
+      		<li class="fa fa-/gallery">
+           		<a href="/gallery" title="相册">相册</a>	
+      		</li>
+    		
+    		
+        	
+		</ul>
+	</nav>
+</div>
+
+		<!--main-->
+		<main> 
+		<div class="page-container">
+		<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+	<div class="am-u-md-8 am-u-sm-12">
+
+		<article class="am-article blog-article-p">
+
+			<div class="am-article-hd">
+				
+
+
+				<h1 class="am-article-title blog-text-center">
+					
+					
+	
+		<a href="/2018/12/03/python/" itemprop="url">		
+			python		
+		</a>
+	
+
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2018/12/03/python/" itemprop="url">
+	<time datetime="2018-12-03T02:39:11.000Z" itemprop="datePublished">
+  		2018-12-03
+  </time>
+</a>    
+&nbsp;
+					</span>
+					
+					<span>						
+						
+					</span>
+				</p>
+			</div>
+
+			<div class="am-article-bd">
+				<div class="content" id="post-content">
+					
+						<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h4 id="1、安装python"><a href="#1、安装python" class="headerlink" title="1、安装python"></a>1、安装python</h4><h5 id="Mac上安装"><a href="#Mac上安装" class="headerlink" title="Mac上安装"></a>Mac上安装</h5><pre><code>在Mac上,系统是OS X &gt;= 10.9,那么系统自带的Python版本是2.7。要安装最新的Python3.7，有两个方法：
+</code></pre><p>   方法一：从python官网下载python3.7的 <strong><a href="https://www.python.org/ftp/python/3.7.0/python-3.7.0-macosx10.9.pkg" target="_blank" rel="noopener">安装程序</a>   </strong>(网速慢的请下载<strong><a href="https://pan.baidu.com/s/1kU5OCOB#list/path=%2Fpub%2Fpython" target="_blank" rel="noopener">国内镜像</a>)</strong></p>
+<p>   方法二：如果安装了<strong><a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a></strong>,直接通过命令brew install python3 安装即可。</p>
+<h5 id="在Linux上安装Python"><a href="#在Linux上安装Python" class="headerlink" title="在Linux上安装Python"></a>在Linux上安装Python</h5><p>   如果你正在使用Linux，那我可以假定你有Linux系统管理经验，自行安装Python 3应该没有问题，否则，请换回Windows系统。</p>
+<h5 id="在windows上安装python"><a href="#在windows上安装python" class="headerlink" title="在windows上安装python"></a>在windows上安装python</h5><p>   首先，根据你的Windows版本（64位还是32位）从Python的官方网站下载Python 3.7对应的<a href="https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe" target="_blank" rel="noopener">64位安装程序</a>或<a href="https://www.python.org/ftp/python/3.7.0/python-3.7.0.exe" target="_blank" rel="noopener">32位安装程序</a>（网速慢的同学请移步<a href="https://pan.baidu.com/s/1kU5OCOB#list/path=%2Fpub%2Fpython" target="_blank" rel="noopener">国内镜像</a>），然后，运行下载的EXE安装包：</p>
+<p><img src="\images\zt-6.png" alt="filename already exists, renamed"><br>特别要注意勾上Add Python 3.7 to PATH，然后点“Install Now”即可完成安装。</p>
+<h4 id="2-运行Python"><a href="#2-运行Python" class="headerlink" title="2.运行Python"></a>2.运行Python</h4><p>安装成功后，打开命令提示符窗口，敲入<code>Python</code>后，会出现两种情况：</p>
+<p>情况一：<br><img src="\images\zt-7.png" alt="filename already exists, renamed"><br>看到上面的画面，就说明Python安装成功！<br>你看到提示符 <strong><code>&gt;&gt;&gt;</code></strong> 就表示我们已经在Python交互式环境中了，可以输入任何Python代码，回车后会立刻得到执行结果。现在，输入<strong>exit()</strong>并回车，就可以退出Python交互环境（直接关掉命令行窗口也可以）。</p>
+<p>情况二：得到一个错误：</p>
+<pre><code>&apos;python&apos; 不是内部或外部命令，也不是可运行的程序或批处理文件。
+</code></pre><p><img src="\images\zt-8.png" alt="filename already exists, renamed"></p>
+<h4 id="3、编写第一个Python程序"><a href="#3、编写第一个Python程序" class="headerlink" title="3、编写第一个Python程序"></a>3、编写第一个Python程序</h4><p>   用编辑器来写代码，可以使用<strong>Sublime text</strong>、<strong>WebStorm</strong>；</p>
+<p>   我使用的HbuilderX，发现一款好用的编辑器，功能强大；</p>
+<p>编辑器下新建 <strong><code>.py</code></strong> 文件，在里面输入代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python(&apos;hello,world&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\zt-9.png" alt="filename already exists, renamed"><br>注意 <strong>print</strong> 前面不要有任何空格。然后选择一个目录，保存文件为hello.py,就可以打开命令行窗口，把当前目录切换到hello。py所在目录，运行这个程序；</p>
+<p><img src="\images\zt-10.png" alt="filename already exists, renamed"></p>
+<p>   运行成功；</p>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><p>   用<code>print</code>在括号中加入字符串，就可以向屏幕上输出指定的文字。比如输出<code>hello,world</code>,用代码实现如下：</p>
+<pre><code>&gt;&gt;&gt;print(&apos;hello,world!&apos;)
+</code></pre><p>  <code>print()</code>函数也可以接受多个字符串，用逗号“，”隔开，就可以练成一串输出：</p>
+<pre><code>&gt;&gt;&gt;print(&apos;the quick brown fox&apos;,&apos;jumps over&apos;,&apos;the lazy dog&apos;)
+</code></pre><p><img src="\images\zt-11.png" alt="filename already exists, renamed"><br><code>print()</code>也可以打印整数，或者计算结果：</p>
+<pre><code>&gt;&gt;&gt;print(300)
+300
+&gt;&gt;&gt;print(100+200)
+300
+</code></pre><p>我们可以吧计算<code>100 + 200</code>的结果打印的更漂亮些；</p>
+<p><img src="\images\zt-12.png" alt="filename already exists, renamed"><br>注意，对于<code>100+200</code>，Python解释器自动计算出结果<code>300</code>,但是，<code>100+200=</code>是字符串 而非数学公式，Python把他视为字符串。</p>
+<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>如果要让用户从电脑输入一些字符怎么办？Python提供了一个<code>input()</code>，可以让用户输入字符串，并存放到一个变量里。比如输入用户的名字：</p>
+<p><img src="\images\zt-13.png" alt="filename already exists, renamed"><br>当你输入<code>name = input()</code>并按下回车后，<code>Python</code>交互命令又回到<code>&gt;&gt;&gt;</code>状态了，那我们刚才输入的内容到哪去了？答案是存放到<code>name</code>变量里了，可以直接输入<code>name</code>查看变量内容。</p>
+<p>要打印出name变量的内容，除了直接写name然后按回车外，还可以用print()函数；<br><img src="\images\zt-14.png" alt="filename already exists, renamed"></p>
+<p>有了输入和输出，我们可以吧上面打印hello，world的程序改成有意义的程序了；</p>
+<p><img src="\images\zt-15.png" alt="filename already exists, renamed"><br>但是程序运行的时候，没有任何提示信息告诉用户：“嘿，赶紧输入你的名字”，这样显得很不友好。幸好，input()可以让你显示一个字符串来提示用户，于是我们把代码改成：</p>
+<p><img src="\images\zt-16.png" alt="filename already exists, renamed"></p>
+<h4 id="4、Python基础"><a href="#4、Python基础" class="headerlink" title="4、Python基础"></a>4、Python基础</h4><ul>
+<li><h6 id="1、数据类型"><a href="#1、数据类型" class="headerlink" title="1、数据类型"></a>1、数据类型</h6></li>
+</ul>
+
+					
+				</div>
+			</div>
+		</article>
+
+		<ul class="am-pagination">
+    
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/11/28/se6新特性/" title="ES6新特性">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
+		<div class="theme-annie-comment-button-container">
+	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
+		加载评论
+		<!--加载评论-->
+	</button>
+</div>
+
+<div id="annie-comment-container" class="theme-annie-comment-main-container">
+
+	
+		
+			<!-- comment valine -->
+			<!-- show valine comment -->
+<div id="valineComment" class="comment"></div>
+
+<!-- valine`s js & css -->
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/js/valine.min.js"></script>
+<link rel="stylesheet" href="/css/comment.css">
+
+<script>
+	var checkExistComment = setInterval(function() {
+		if( $('#valineComment').length ) {
+			new Valine({
+				// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+				av: AV,
+				//使用id寻找div元素（使用class可能找不到）
+				el: '#valineComment',
+				emoticon_url: 'https://cloud.panjunwen.com/alu',
+				emoticon_list: ["吐.png", "期待.png", "高兴.png", "吐血倒地.png", "哭泣.png", "欢呼.png"],
+				app_id: "3333....", //获取APP ID
+				app_key: "3333......", //获取APP KEY
+				placeholder: "no any!", //评论框占位提示文字        			
+			});
+			clearInterval(checkExistComment);
+		}
+	}, 100);
+</script>
+		
+	
+
+</div>
+
+<script type="text/javascript">
+	/* Show Comment */
+	var Annie_Comment = function() {
+		function Show_Hidden(obj) {
+			obj.style.display = 'block';
+		}
+		
+		//var obutton = $('#annie-comment-button');
+		//var obutton = $('#annie-comment-container');
+		var obutton = document.getElementById("annie-comment-button" || "0");
+		var odiv = document.getElementById("annie-comment-container");
+		if( 'obutton' ) {
+			obutton.onclick = function() {
+				Show_Hidden(odiv);
+				$("#annie-comment-button").css("display", 'none');
+				return false;
+			}
+		}
+	};
+
+	(function Annie_Init() {
+		Annie_Comment();
+	})();
+</script>
+		
+		<!--
+	时间：2018-09-24
+	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
+-->
+
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python"><span class="post-toc-text">Python</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、安装python"><span class="post-toc-text">1、安装python</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Mac上安装"><span class="post-toc-text">Mac上安装</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#在Linux上安装Python"><span class="post-toc-text">在Linux上安装Python</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#在windows上安装python"><span class="post-toc-text">在windows上安装python</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-运行Python"><span class="post-toc-text">2.运行Python</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、编写第一个Python程序"><span class="post-toc-text">3、编写第一个Python程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#输出"><span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#输入"><span class="post-toc-text">输入</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4、Python基础"><span class="post-toc-text">4、Python基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1、数据类型"><span class="post-toc-text">1、数据类型</span></a></li></ol></li></ol></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</div></div></aside>
+	
+
+	</div>
+</div>
+		</div>
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="blog-text-center">
+		<div class="theme-annie-social">
+				
+				
+					<a href="https://github.com/zhangtaoxianseng" title="Github" target="_blank"><i class="fa fa-github"></i>&nbsp;</a>
+					
+				
+					<a href="https://weibo.com/5080275274/profile?topnav=1&wvr=6" title="Weibo" target="_blank"><i class="fa fa-weibo"></i>&nbsp;</a>
+				
+				
+					<a href="https://mail.163.com/js6/main.jsp?sid=HAOPzehwYNuGEGgHgzwwcmPPKrumKlqb&df=mail163_letter#module=compose.ComposeModule%7C%7B%22type%22%3A%22compose%22%2C%22fullScreen%22%3Atrue%2C%22cid%22%3A%22c%3A1543400694579%22%7D" title="Email" target="_blank"><i class="fa fa-envelope-o"></i>&nbsp;</a>
+					
+				
+					<a href="https://user.qzone.qq.com/1097005663" title="QQ" target="_blank"><i class="fa fa-qq"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Twitter" target="_blank"><i class="fa fa-twitter"></i>&nbsp;</a>
+						
+				
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			
+				&copy; 2017 - 2018, content by 张涛. All Rights Reserved.			       	
+			
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.		
+		</div>
+	</div>
+</footer>
+		<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script> -->
+
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+
+<style>
+	.motto {
+		color: #000000;
+		font-size: 20px;
+		margin: 100px 25% 0;
+		width: 50%;
+		line-height: 1.4;
+		font-family:"KaiTi", "STXingkai", "Source Sans Pro", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+		text-align: center;
+	}
+	@media(max-width: 890px) {
+		.motto {	
+			margin: 100px 10% 0;
+			width: 80%;
+		}
+	}
+	@media(max-width: 890px) {
+		.motto {
+			margin: 100px 5% 0;
+			width: 90%;
+		}
+	}
+</style>
+
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
+
+
+
+
+
+
+
+	<script type="text/javascript" src="/js/toc.js"></script>
+
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript">
+	//generate a random img that pre_name 'from 0 to 110'
+	var random_bg = Math.floor(Math.random() * 109 + 1);
+
+	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
+	var bg = 'url(https://github.com/zhangtaoxianseng/zhangtaoxianseng.github.io/blob/master/img/1.jpg' + random_bg + '.jpg)';
+
+	$("#header-bg-2").css("background-image", bg);
+</script>
+		
+		<!--back to top-->
+        <style type="text/css">
+	#totop {
+		background: white;
+		border-radius: 50%;
+		position: fixed;
+		right: 5.4%;
+		bottom: 80px;
+		cursor: pointer;
+	}
+	
+	#totop a {
+		color: #474747;
+		background-color: transparent;
+		padding: 10px;
+		text-decoration: none;
+	}
+	
+	@media(max-width:512px) {
+		#totop {
+			display: none;
+			visibility: hidden;
+		}
+	}
+</style>
+
+
+	<div id="totop">
+  		<a href="javascript:;" class="fa fa-arrow-up"></a>
+	</div>
+
+	</body>
+	</html>
+
