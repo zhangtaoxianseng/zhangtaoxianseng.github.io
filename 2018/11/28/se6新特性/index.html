@@ -61,7 +61,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		12/7/2018 
+		12/10/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -501,9 +501,60 @@ var accountServiceES5 = {
   getAccounts = function(){return [1,2,3]};
   var accountService = {
       __proto__: serviceBase,
-      getAccounts
+      getAccounts,
   }
-</code></pre>
+</code></pre><h3 id="七、Arrow-Function-（箭头函数）"><a href="#七、Arrow-Function-（箭头函数）" class="headerlink" title="七、Arrow Function （箭头函数）"></a>七、Arrow Function （箭头函数）</h3><p> 以前我们使用闭包，this总是预期之外的发生改变，箭头函数的迷人之处在于，现在你的this可以按照你的预期使用了，身处箭头函数里面，this还是原来的this。</p>
+<p> 有了箭头函数在es6中，我们就不必用that = this 或 self = this或者 _this = this 或 .bind(this).</p>
+<pre><code>//在ES5中
+var _this = this;
+$(&apos;.btn&apos;).click(function(event){
+    _this.sendData();
+})
+</code></pre><p>   在ES6中就不需要用_this = this：</p>
+<pre><code>   $(&apos;.btn&apos;).click(event) =&gt; {
+    this.sendData();
+}
+</code></pre><p>   es6 委员会决定，以前的function的传递方式也是很好的方案，所以他们依然保留以前的功能。</p>
+<p>   下面这个是一个另外的例子，我们通过call传递文本给logUpperCase（）函数在es5：</p>
+<pre><code> var logUpperCase = function（）{
+     var _this = this;
+       this.string = this.string.toUpperCase()
+    return function(){
+        return console.log(_this.string)
+    }
+  }
+logUpperCase.call({string:&quot;es6 rocks&quot;})();
+</code></pre><p>   而在ES6，我们并不需要用_this浪费时间 :</p>
+<pre><code>var logUpperCase = function(){
+     this.string = this.string.toUpperCase();
+    return() =&gt;console.log(this.string);
+}
+</code></pre><p>  请注意，只要你愿意，在es6中=&gt;可以混合和匹配老的函数一起使用。在一行代码中用了箭头函数，就变成了一个表达式。他将暗地里返回单个语句的结果。如果你超过了一行，将需要明确使用return。</p>
+<p>这是一个用se5代码创建的消息数组：</p>
+<pre><code>var ids = [&apos;dasdasda525555&apos;,[&apos;czczcsefw4545&apos;];
+var messages = ids.map(function(){
+    return &apos;ID is&apos;+value //显示return
+})
+</code></pre><p>用es6是这样显示的：</p>
+<pre><code>var ids = [&apos;dasdasda525555&apos;,[&apos;czczcsefw4545&apos;];
+var messages = ids.map(value =&gt; `ID is ${value}`)
+</code></pre><p>   在箭头函数中对于的那个参数，括号（）是可选的，但当你超过一个参数的时候你就需要他们。</p>
+<p> 在es5代码有明确的返回功能：</p>
+<pre><code>var ids = [&apos;5632953c4e345e145fdf2df8&apos;, &apos;563295464e345e145fdf2df9&apos;];
+var messages = ids.map(function (value, index, list) {
+  return &apos;ID of &apos; + index + &apos; element is &apos; + value + &apos; &apos;; // explicit return
+});
+</code></pre><p>   在es6中有更加严谨的版本，参数需要被包含在括号里并且它是隐式返回：</p>
+<pre><code>   var ids =[&apos;5632953c4e345e145fdf2df8&apos;,&apos;563295464e345e145fdf2df9&apos;];
+var messages = ids.map((value, index, list) =&gt; 
+    `ID of ${index} element is ${value} `); // implicit return
+</code></pre><h3 id="八、Promise"><a href="#八、Promise" class="headerlink" title="八、Promise"></a>八、Promise</h3><p>   promise在es6中有标准的promise实现。</p>
+<pre><code>setTimeout(function(）{
+      console.log(&apos;yay!&apos;)    
+},1000)
+</code></pre><p>   在es6中，我们可以用promise重写：</p>
+<p>   var wait1000 = new Promise(function(resolve,reject){<br>       setTimeout(resolve,1000)<br>   }).then(function(){<br>           console.log(‘yay!’)<br>   })</p>
+
 					
 				</div>
 			</div>
@@ -611,7 +662,7 @@ var accountServiceES5 = {
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-、let和const"><span class="post-toc-text">一 、let和const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-块级作用域"><span class="post-toc-text">2 .块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ES6-的块级作用域"><span class="post-toc-text">ES6 的块级作用域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块级作用域与函数声明"><span class="post-toc-text">块级作用域与函数声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-const"><span class="post-toc-text">3.const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法-1"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本质"><span class="post-toc-text">本质</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#es6声明变量的六种方法"><span class="post-toc-text">es6声明变量的六种方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-顶层对象的属性"><span class="post-toc-text">4.顶层对象的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、Default-Parameters（默认参数）in-ES6"><span class="post-toc-text">二、Default Parameters（默认参数）in ES6</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-template-literals（模板对象）"><span class="post-toc-text">三.template literals（模板对象）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、Multi-line-Strings（多行字符串）"><span class="post-toc-text">四、Multi-line Strings（多行字符串）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、Destructuring-Assignment（结构赋值）"><span class="post-toc-text">五、Destructuring Assignment（结构赋值）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、Enhanced-Object-Literals-（增强的对象字面量）"><span class="post-toc-text">六、Enhanced Object Literals （增强的对象字面量）</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-、let和const"><span class="post-toc-text">一 、let和const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-块级作用域"><span class="post-toc-text">2 .块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ES6-的块级作用域"><span class="post-toc-text">ES6 的块级作用域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块级作用域与函数声明"><span class="post-toc-text">块级作用域与函数声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-const"><span class="post-toc-text">3.const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法-1"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本质"><span class="post-toc-text">本质</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#es6声明变量的六种方法"><span class="post-toc-text">es6声明变量的六种方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-顶层对象的属性"><span class="post-toc-text">4.顶层对象的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、Default-Parameters（默认参数）in-ES6"><span class="post-toc-text">二、Default Parameters（默认参数）in ES6</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-template-literals（模板对象）"><span class="post-toc-text">三.template literals（模板对象）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、Multi-line-Strings（多行字符串）"><span class="post-toc-text">四、Multi-line Strings（多行字符串）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、Destructuring-Assignment（结构赋值）"><span class="post-toc-text">五、Destructuring Assignment（结构赋值）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、Enhanced-Object-Literals-（增强的对象字面量）"><span class="post-toc-text">六、Enhanced Object Literals （增强的对象字面量）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七、Arrow-Function-（箭头函数）"><span class="post-toc-text">七、Arrow Function （箭头函数）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#八、Promise"><span class="post-toc-text">八、Promise</span></a></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
