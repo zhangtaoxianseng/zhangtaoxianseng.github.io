@@ -61,7 +61,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		12/10/2018 
+		12/11/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -553,7 +553,99 @@ var messages = ids.map((value, index, list) =&gt;
       console.log(&apos;yay!&apos;)    
 },1000)
 </code></pre><p>   在es6中，我们可以用promise重写：</p>
-<p>   var wait1000 = new Promise(function(resolve,reject){<br>       setTimeout(resolve,1000)<br>   }).then(function(){<br>           console.log(‘yay!’)<br>   })</p>
+<pre><code>var wait1000 = new Promise(function(resolve,reject){
+   setTimeout(resolve,1000)
+}).then(function(){
+       console.log(&apos;yay!&apos;)
+</code></pre><p>   })</p>
+<h3 id="九、Classes-类"><a href="#九、Classes-类" class="headerlink" title="九、Classes(类)"></a>九、Classes(类)</h3><p>   js语音中，生成实例对象的传统方法是通过构造函数。</p>
+<pre><code>function Point（x，y）{
+       this.x = x;
+       this.y = y;
+}
+Point.prototype.toString = function(){
+    return &apos;(&apos;+ this.x +&apos;,&apos;+ this.y + &apos;)&apos;;
+} 
+var p = new Point(1,2);
+</code></pre><p>   上面的和传统的面向对象语音（c++和Java）差异很大，容易让初学者困惑。</p>
+<p>   es6提供了跟接近传统语音的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。</p>
+<p>   基本上，es6的class可以看作是一个语法糖 ，它绝大部分功能，es5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。上面的代码用es6的class改写。</p>
+<pre><code>class Point{
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+  }
+  toString(){
+     return &apos;(&apos;+ this.x +&apos;,&apos;+ this.y + &apos;)&apos;;
+    }     
+}
+</code></pre><p>  es6</p>
+<pre><code>class baseModel {
+  constructor(options, data) { // class constructor，node.js 5.6暂时不支持options = {}, data = []这样传参
+      this.name = &apos;Base&apos;;
+      this.url = &apos;http://azat.co/api&apos;;
+      this.data = data;
+      this.options = options;
+   }
+    getName() { // class method
+        console.log(`Class name: ${this.name}`);
+    }
+}
+</code></pre><p>   注意我们对options 和data使用了默认参数值。此外方法名也不需要加function关键字，而且冒号(：)也不需要了。另外一个大的区别就是你不需要分配属性this。现在设置一个属性的值，只需简单的在构造函数中分配。</p>
+<p>AccountModel 从类baseModel 中继承而来:</p>
+<pre><code>class AccountModel extends baseModel {
+    constructor(options, data) {
+</code></pre><p>  如果你想做些更好玩的，你可以把 accountData 设置成一个属性：</p>
+<pre><code>get accountsData() { //calculated attribute getter
+ // ... make XHR
+         return this.data;
+     }
+ }
+</code></pre><p>  那么，你如何调用他们呢？它是非常容易的：</p>
+<p>  结果令人惊讶，输出是：</p>
+<pre><code>Class name: Account Model
+
+Data is  32113123123,524214691
+</code></pre><h3 id="十、Modules（模块）"><a href="#十、Modules（模块）" class="headerlink" title="十、Modules（模块）"></a>十、Modules（模块）</h3><p>  es6以前js并不支持本地的模块。人们想出AMD，requirejs，commonjs以及其他解决方法。现在es5中可以用模块import和export。</p>
+<p>   在ES5中，你可以在 <code>&lt;script&gt;</code>中直接写可以运行的代码（简称IIFE），或者一些库像AMD。然而在ES6中，你可以用export导入你的类。下面举个例子，在ES5中,module.js有port变量和getAccounts 方法:</p>
+<pre><code>module.exports = {
+  port: 3000,
+  getAccounts: function() {
+    ...
+  }
+}
+</code></pre><p>  在ES5中，main.js需要依赖require(‘module’) 导入module.js：</p>
+<pre><code>var service = require(&apos;module.js&apos;);
+console.log(service.port); //3000
+</code></pre><p>  或者  我们可以在main.js中吧整个模块导入，并命名为service：</p>
+<pre><code>import * as service from &apos;module&apos;;
+console.log(service.port);//3000
+
+ 从我个人角度来说，我觉得ES6模块是让人困惑的。但可以肯定的事，它们使语言更加灵活了。
+</code></pre><p>并不是所有的浏览器都支持ES6模块，所以你需要使用一些像jspm去支持ES6模块。</p>
+<h3 id="最后如何使用ES6（Babel）"><a href="#最后如何使用ES6（Babel）" class="headerlink" title="最后如何使用ES6（Babel）"></a>最后如何使用ES6（Babel）</h3><p>es6已经广泛使用了，但是不是所有的浏览器都完全支持。要使用se6，需要一个编译器如：babel。你可以把它作为一个独立的工具使用，也可以把它放在构建中。grunt，gulp和webpack中都有可以支持babel的插件。</p>
+<p><img src="\images\zt-28.png" alt="filename already exists, renamed"><br>这是一个gulp案列，安装gulp-babel插件：</p>
+<pre><code>$ npm install --save-dev gulp-babel
+</code></pre><p> 在gulpfile.js中，定义一个任务build，放入src/app.js，并且编译它进入构建文件中。</p>
+<pre><code>var gulp = require(&apos;gulp&apos;),
+babel = require(&apos;gulp-babel&apos;);
+gulp.task(&apos;build&apos;, function () {
+  return gulp.src(&apos;src/app.js&apos;)
+    .pipe(babel())
+    .pipe(gulp.dest(&apos;build&apos;));
+})
+</code></pre><h5 id="Node-js-and-ES6"><a href="#Node-js-and-ES6" class="headerlink" title="Node.js and ES6"></a>Node.js and ES6</h5><p>   在nodejs中，你可以用构建工具或者独立的Babel模块 babel-core 来编译你的Node.js文件。安装如下：</p>
+<pre><code>$ npm install --save-dev babel-core
+</code></pre><p>然后在node.js中，你可以调用这个函数：</p>
+<pre><code>require(&quot;babel-core&quot;).transform(ES5Code, options);
+</code></pre><h3 id="ES6总结"><a href="#ES6总结" class="headerlink" title="ES6总结"></a>ES6总结</h3><p>   这里还有许多ES6的其它特性你可能会使用到，排名不分先后：</p>
+<p>   1、全新的<code>Math</code>，<code>munber</code>，<code>string</code>，<code>array</code> 和<code>object</code>方法</p>
+<p>  2、二进制和八进制数据类型</p>
+<p>  3、默认参数不定参数扩展运算符</p>
+<p>  4、Symbols符号</p>
+<p>  5、tail调用</p>
+<p>  6、Generators（生成器）</p>
+<p>  7、New data structures like Map and Set(新的数据构造对像MAP和set)</p>
 
 					
 				</div>
@@ -662,7 +754,7 @@ var messages = ids.map((value, index, list) =&gt;
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-、let和const"><span class="post-toc-text">一 、let和const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-块级作用域"><span class="post-toc-text">2 .块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ES6-的块级作用域"><span class="post-toc-text">ES6 的块级作用域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块级作用域与函数声明"><span class="post-toc-text">块级作用域与函数声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-const"><span class="post-toc-text">3.const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法-1"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本质"><span class="post-toc-text">本质</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#es6声明变量的六种方法"><span class="post-toc-text">es6声明变量的六种方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-顶层对象的属性"><span class="post-toc-text">4.顶层对象的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、Default-Parameters（默认参数）in-ES6"><span class="post-toc-text">二、Default Parameters（默认参数）in ES6</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-template-literals（模板对象）"><span class="post-toc-text">三.template literals（模板对象）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、Multi-line-Strings（多行字符串）"><span class="post-toc-text">四、Multi-line Strings（多行字符串）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、Destructuring-Assignment（结构赋值）"><span class="post-toc-text">五、Destructuring Assignment（结构赋值）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、Enhanced-Object-Literals-（增强的对象字面量）"><span class="post-toc-text">六、Enhanced Object Literals （增强的对象字面量）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七、Arrow-Function-（箭头函数）"><span class="post-toc-text">七、Arrow Function （箭头函数）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#八、Promise"><span class="post-toc-text">八、Promise</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6新特性"><span class="post-toc-text">ES6新特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-、let和const"><span class="post-toc-text">一 、let和const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-let-和-const"><span class="post-toc-text">1. let 和 const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂时性死区"><span class="post-toc-text">暂时性死区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#不允许重复声明"><span class="post-toc-text">不允许重复声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-块级作用域"><span class="post-toc-text">2 .块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ES6-的块级作用域"><span class="post-toc-text">ES6 的块级作用域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块级作用域与函数声明"><span class="post-toc-text">块级作用域与函数声明</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-const"><span class="post-toc-text">3.const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本用法-1"><span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本质"><span class="post-toc-text">本质</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#es6声明变量的六种方法"><span class="post-toc-text">es6声明变量的六种方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-顶层对象的属性"><span class="post-toc-text">4.顶层对象的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、Default-Parameters（默认参数）in-ES6"><span class="post-toc-text">二、Default Parameters（默认参数）in ES6</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-template-literals（模板对象）"><span class="post-toc-text">三.template literals（模板对象）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、Multi-line-Strings（多行字符串）"><span class="post-toc-text">四、Multi-line Strings（多行字符串）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、Destructuring-Assignment（结构赋值）"><span class="post-toc-text">五、Destructuring Assignment（结构赋值）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、Enhanced-Object-Literals-（增强的对象字面量）"><span class="post-toc-text">六、Enhanced Object Literals （增强的对象字面量）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七、Arrow-Function-（箭头函数）"><span class="post-toc-text">七、Arrow Function （箭头函数）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#八、Promise"><span class="post-toc-text">八、Promise</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#九、Classes-类"><span class="post-toc-text">九、Classes(类)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十、Modules（模块）"><span class="post-toc-text">十、Modules（模块）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后如何使用ES6（Babel）"><span class="post-toc-text">最后如何使用ES6（Babel）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Node-js-and-ES6"><span class="post-toc-text">Node.js and ES6</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6总结"><span class="post-toc-text">ES6总结</span></a></li>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
