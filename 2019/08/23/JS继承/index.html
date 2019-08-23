@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>Hello World</title>
+	<title>JS继承</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《Hello World》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《JS继承》</p>
 			
 		
 	
@@ -160,8 +160,8 @@
 					
 					
 	
-		<a href="/2018/11/21/hello-world/" itemprop="url">		
-			Hello World		
+		<a href="/2019/08/23/JS继承/" itemprop="url">		
+			JS继承		
 		</a>
 	
 
@@ -170,9 +170,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/21/hello-world/" itemprop="url">
-	<time datetime="2018-11-21T09:26:59.702Z" itemprop="datePublished">
-  		2018-11-21
+						<a href="/2019/08/23/JS继承/" itemprop="url">
+	<time datetime="2019-08-23T09:08:02.000Z" itemprop="datePublished">
+  		2019-08-23
   </time>
 </a>    
 &nbsp;
@@ -187,16 +187,24 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+						<h3 id="一、构造函数继承"><a href="#一、构造函数继承" class="headerlink" title="一、构造函数继承"></a>一、构造函数继承</h3><p>  例如现在创建一个构造函数</p>
+<pre><code>function Animal(){
+  this.species = &quot;动物&quot;;
+}
+function Person(name, age){
+    this.name = name;
+  this.age = age;
+}
+</code></pre><h4 id="1、构造函数绑定"><a href="#1、构造函数绑定" class="headerlink" title="1、构造函数绑定"></a>1、构造函数绑定</h4><p>   第一种方法也是最简单的方法，使用call或apply方法，将父对象的构造函数绑定在子对象上；</p>
+<pre><code>fucntion Person(name,age){
+    Animal.call(this,name,age);
+    this.name = name;
+    this.age = age;
+}
 
+var person = new Person(&apos;老王&apos;，&apos;18&apos;)；
+alert(person.species)
+</code></pre>
 					
 				</div>
 			</div>
@@ -204,13 +212,13 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/22/童话镇-1/" title="fairy">
-      		&laquo; 上一篇
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/12/20/canvas画图/" title="canvas画图">
+			下一篇 &raquo;
 		</a>
 		</li>
-	
-	
+	 
  </ul>
         
 
@@ -298,7 +306,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、构造函数继承"><span class="post-toc-text">一、构造函数继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、构造函数绑定"><span class="post-toc-text">1、构造函数绑定</span></a></li></ol></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>

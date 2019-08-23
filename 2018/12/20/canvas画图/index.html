@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>Hello World</title>
+	<title>canvas画图</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《Hello World》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《canvas画图》</p>
 			
 		
 	
@@ -160,8 +160,8 @@
 					
 					
 	
-		<a href="/2018/11/21/hello-world/" itemprop="url">		
-			Hello World		
+		<a href="/2018/12/20/canvas画图/" itemprop="url">		
+			canvas画图		
 		</a>
 	
 
@@ -170,9 +170,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/21/hello-world/" itemprop="url">
-	<time datetime="2018-11-21T09:26:59.702Z" itemprop="datePublished">
-  		2018-11-21
+						<a href="/2018/12/20/canvas画图/" itemprop="url">
+	<time datetime="2018-12-20T07:13:15.000Z" itemprop="datePublished">
+  		2018-12-20
   </time>
 </a>    
 &nbsp;
@@ -187,16 +187,57 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+						<h1 id="cnavas"><a href="#cnavas" class="headerlink" title="cnavas"></a>cnavas</h1><h4 id="1、canvas的基本知识"><a href="#1、canvas的基本知识" class="headerlink" title="1、canvas的基本知识"></a>1、canvas的基本知识</h4><h6 id="1-创建一个canvas标签"><a href="#1-创建一个canvas标签" class="headerlink" title="1.创建一个canvas标签"></a>1.创建一个canvas标签</h6><p><code>canvas</code>是h5的新标签，必须使用脚本来绘制图形。</p>
+<pre><code>&lt;cnavas id=&apos;canvas&apos;&gt;&lt;/cnavas&gt;
+&lt;script&gt;
+    var canvas = doucment.getElementById(&apos;mycanvas&apos;);
+    var ctx = mycanvas.getContext(&apos;2d&apos;);
+&lt;/script&gt;    
+</code></pre><p><code>canvas</code>是一个二维网格，左上角坐标为（0,0），可以设置宽高，可绘制路径，矩形，图形，字符以及添加图像。</p>
+<h6 id="2、canvas的基本内容"><a href="#2、canvas的基本内容" class="headerlink" title="2、canvas的基本内容"></a>2、canvas的基本内容</h6><h6 id="（1）路径"><a href="#（1）路径" class="headerlink" title="（1）路径"></a>（1）路径</h6><p>   canvas上画线 ：</p>
+<pre><code> ctx.moveTo(0,0)  // moveTo(x,y)定义线条开始坐标
+ctx.lineTo(200,100)  // lineTo(x,y)定义线条结束坐标
+    ctx.beginPath() //起始一条路径，重新画一条新的路线需要用他开始
+ctx.closePath() //路径结束后，把起点和终点连接
 
+ctx.stroke()  //绘制已定义的路径
+ctx.fill()  //填充当前绘图
+ctx.clip() //从原画布剪切任意形状和尺寸的区域
+新款
+ctx.arc(0,0,10,0,2*Math.PI) //创建一个圆形
+ctx.arcTo() //两切线之间的弧
+isPointInPath(20,50) 判断这个点在你绘制的图形里吗
+</code></pre><h6 id="（2）颜色，样式和阴影"><a href="#（2）颜色，样式和阴影" class="headerlink" title="（2）颜色，样式和阴影"></a>（2）颜色，样式和阴影</h6><pre><code>fillStyle = &apos;red&apos; //用于画图时填充的颜色
+strokeStyle = &apos;red&apos; //用于画笔的颜色
+shadowColor = &apos;blue&apos; //用于设置阴影的颜色
+shadowBlur = 20 //用于模糊的级别
+shadowOffsetX //设置或返回阴影矩形的水平距离
+shadowOffsetY //设置或返回阴影矩形的垂直距离
+</code></pre><h6 id="3-矩形"><a href="#3-矩形" class="headerlink" title="(3)矩形"></a>(3)矩形</h6><pre><code>ctx.rect(0,0,200,200) //创建矩形
+ctx.fillRect(0,0,200,200) //绘制被填充矩形
+strokeRect（0,0,100,100）//绘制矩形
+clearRect（20，20,100,100）//在给定的矩形内清除指定的区域
+</code></pre><h6 id="（4）线条样式"><a href="#（4）线条样式" class="headerlink" title="（4）线条样式"></a>（4）线条样式</h6><pre><code>lineCap = &apos;round&apos; //设置或返回线条结束端点样式
+lineJoin = &apos;round&apos; //两条相交的直线，交汇时的夹角类型
+lineWidth = 10 //返回当前的线条宽度
+</code></pre><h6 id="（5）转换"><a href="#（5）转换" class="headerlink" title="（5）转换"></a>（5）转换</h6><pre><code>ctx.scale(2,2) x,y放大的倍数，放大后在绘制
+ctx.rotate(20*Math.PI/180) //旋转当前绘图，20deg
+ctx.translate(70,70) //改变画布（0,0）的位置
+transform(1,0.5,-0.5,1,100,100) 水平缩放，水平倾斜，垂直倾斜，垂直缩放，水平位移，垂直位移    
+</code></pre><h6 id="6-文本"><a href="#6-文本" class="headerlink" title="(6)文本"></a>(6)文本</h6><pre><code>ctx.font =  &apos;40px arial&apos;;字体属性
+ctx.strokeText(&apos;zhangtao&apos;,10,10) 绘制什么字体，坐标位置
+</code></pre><h6 id="7-图像绘制"><a href="#7-图像绘制" class="headerlink" title="(7)图像绘制"></a>(7)图像绘制</h6><pre><code>    图像绘制
+    var img = document.getElementById(&apos;tulip&apos;)
+    ctx.drawImage(img,10,10); 绘制图片的坐标位置
+    ctx.drawImage(img,10,10,100,100) 绘制图片的位置，和生成图片的width和heigth
+    ctx.drawImage(img,0,0,100,100,0,0,100,100)绘制图片剪切的坐标，被剪切的width和height ， 在画布上显示的坐标位置以及显示图片的大小
+
+    合成
+globalAlpha 返回透明值
+
+
+ctx.drawImage(img,0,0,100,100,0,0,100,100)绘制图片剪切的坐标，被剪切的width和height ， 在画布上显示的坐标位置以及显示图片的大小
+</code></pre>
 					
 				</div>
 			</div>
@@ -205,12 +246,18 @@
 		<ul class="am-pagination">
     
     	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/22/童话镇-1/" title="fairy">
+   		<a class="pull-left" href="/2019/08/23/JS继承/" title="JS继承">
       		&laquo; 上一篇
 		</a>
 		</li>
 	
 	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/12/03/python/" title="python">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
  </ul>
         
 
@@ -298,7 +345,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cnavas"><span class="post-toc-text">cnavas</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、canvas的基本知识"><span class="post-toc-text">1、canvas的基本知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-创建一个canvas标签"><span class="post-toc-text">1.创建一个canvas标签</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2、canvas的基本内容"><span class="post-toc-text">2、canvas的基本内容</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#（1）路径"><span class="post-toc-text">（1）路径</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#（2）颜色，样式和阴影"><span class="post-toc-text">（2）颜色，样式和阴影</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#3-矩形"><span class="post-toc-text">(3)矩形</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#（4）线条样式"><span class="post-toc-text">（4）线条样式</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#（5）转换"><span class="post-toc-text">（5）转换</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#6-文本"><span class="post-toc-text">(6)文本</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#7-图像绘制"><span class="post-toc-text">(7)图像绘制</span></a></li></ol></li></ol></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
